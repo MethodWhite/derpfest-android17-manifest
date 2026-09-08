@@ -1,0 +1,6 @@
+# Main project index: keep governance and device trees; index the kernel separately.
+source/
+repo-meta/
+.tools/
+kernel-motorola-sm6375/
+manifest-derpfest-16.2/.git/

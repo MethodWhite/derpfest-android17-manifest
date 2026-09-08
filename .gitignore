@@ -18,3 +18,4 @@ private/
 # Local/editor state
 .obsidian/workspace*.json
 .DS_Store
+.gitnexus/

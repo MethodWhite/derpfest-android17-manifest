@@ -23,6 +23,7 @@
 ## Estado
 
 - [[../PORT_STATUS]] — fuente de verdad del port técnico
+- [[35-gitnexus-atomic-work]] — análisis de impacto y commits atómicos
 
 ## Convención de enlaces
 
