@@ -4,6 +4,8 @@ on:
 jobs:
   hygiene:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - name: Reject generated outputs and secrets
