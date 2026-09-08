@@ -16,6 +16,8 @@ El checkout Android 17 estaba incompleto por sparse-checkout y repositorios auxi
 - Se restauraron JUnit, JSpecify, JSR330, KMOD, JUnit Params y los paths públicos/system/module-lib/test del SDK disponibles en el repositorio cacheado.
 - `external/jxmpp` existe como repositorio AOSP vacío; no se debe inventar contenido ni sustituirlo sin fijar una fuente compatible.
 - Falta resolver la interfaz Lineage `vendor.lineage.touch-V1.0-java` y su dependencia `hardware/google/pixel`.
+- La referencia Java HIDL fue retirada de `frameworks/base/Android.bp`: no tiene consumidores Java y el servicio Motorola usa `vendor.lineage.touch-V1-ndk`; el árbol Lineage actual publica Touch mediante AIDL.
+- Los paquetes opcionales Motorola `MotoActions` y `StylusKeyHandler` quedaron deshabilitados mientras falta `org.lineageos.settings.resources`; se reactivarán al sincronizar el Settings Lineage compatible.
 
 ## Criterio de cierre
 
