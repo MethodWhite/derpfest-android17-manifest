@@ -1,0 +1,13 @@
+# Contribuir
+
+Lee [`docs/00-index.md`](docs/00-index.md), crea o enlaza un Issue y trabaja en una rama `type/scope/description`. Mantén los PRs pequeños, explica riesgo/rollback y adjunta solo evidencia sanitizada.
+
+Antes de solicitar revisión:
+
+- ejecuta las validaciones relevantes;
+- actualiza documentación, matriz o ADR;
+- verifica `git diff --check`;
+- confirma que no hay `source/out`, blobs no autorizados, claves ni datos privados;
+- describe el target y el resultado.
+
+Los cambios de device tree, kernel, vendor y CI deben permanecer separados cuando sea posible.
