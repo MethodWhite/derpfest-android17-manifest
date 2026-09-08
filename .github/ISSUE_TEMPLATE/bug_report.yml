@@ -1,0 +1,31 @@
+name: Bug report
+description: Reportar un fallo reproducible de la ROM
+title: "[BUG] "
+labels: [bug, triage]
+body:
+  - type: input
+    id: build
+    attributes:
+      label: Build/fingerprint
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidad
+      options: [S0, S1, S2, S3]
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Pasos y resultado esperado/actual
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs sanitizados
+      description: No incluir IMEI, tokens ni datos personales.
+    validations:
+      required: true

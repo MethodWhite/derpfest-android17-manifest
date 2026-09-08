@@ -1,0 +1,26 @@
+name: Documentation check
+on:
+  pull_request:
+    paths: ['docs/**', 'README.md', 'PORT_STATUS.md', '.github/**']
+  push:
+    branches: [main]
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required documentation
+        run: |
+          test -f README.md
+          test -f docs/00-index.md
+          test -f docs/01-project-charter.md
+          test -f docs/02-scrum-ban.md
+          test -f docs/04-bug-reporting.md
+          rg -q 'Android 17' README.md
+          rg -q 'miami' README.md
+      - name: Check markdown links are not empty
+        run: |
+          if rg -nE '\\]\\(\\s*\\)' README.md docs .github; then
+            echo 'Empty Markdown link found'
+            exit 1
+          fi

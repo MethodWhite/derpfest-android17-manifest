@@ -1,0 +1,20 @@
+# Android checkout, build outputs and local state
+source/
+repo-meta/
+.tools/
+source/out/
+source/.repo/
+*.img
+*.zip
+*.log
+*.tmp
+
+# Secrets and device-local data
+*.key
+*.pem
+credentials/
+private/
+
+# Local/editor state
+.obsidian/workspace*.json
+.DS_Store

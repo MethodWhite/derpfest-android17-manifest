@@ -1,0 +1,13 @@
+name: Repository hygiene
+on:
+  pull_request:
+jobs:
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject generated outputs and secrets
+        run: |
+          test ! -d source/out
+          ! find . -path './.git' -prune -o -type f \( -name '*.key' -o -name '*.pem' \) -print -quit | grep -q .
+          ! rg -n --hidden --glob '!source/.repo/**' --glob '!source/out/**' 'BEGIN (RSA|OPENSSH|EC) PRIVATE KEY' .

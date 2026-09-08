@@ -1,0 +1,28 @@
+# DerpFest Android 17 — Motorola Edge 30 Neo (`miami`)
+
+![DerpFest](manifest-derpfest-16.2/derpfest.png)
+
+Port comunitario de DerpFest para `miami`, organizado con ScrumBan y documentación enlazada para Obsidian. El código fuente AOSP/ROM vive en [`source/`](source/); la documentación operativa vive en [`docs/`](docs/).
+
+## Inicio rápido
+
+1. Leer [`docs/00-index.md`](docs/00-index.md) y [`docs/01-project-charter.md`](docs/01-project-charter.md).
+2. Consultar [`PORT_STATUS.md`](PORT_STATUS.md) para el estado técnico real.
+3. Crear trabajo desde las plantillas de GitHub y usar ramas `type/scope/short-description`.
+4. No subir blobs, credenciales, artefactos `out/` ni dumps del dispositivo.
+
+## Principios
+
+- Trazabilidad: cada cambio debe enlazar una historia, caso de uso o bug.
+- Cambios pequeños y reversibles; separar portabilidad, producto y personalización.
+- Validación por capas: lint/documentación → bootstrap Soong → target focalizado → build de imagen → prueba en emulador/dispositivo.
+- La documentación es parte del entregable y debe actualizarse junto con el cambio.
+
+## Estructura
+
+| Ruta | Propósito |
+|---|---|
+| `source/` | Checkout Android/DerpFest y árboles de dispositivo |
+| `docs/` | Wiki Obsidian, proceso, arquitectura y decisiones |
+| `.github/` | Plantillas, CODEOWNERS y Actions |
+| `PORT_STATUS.md` | Diario técnico y bloqueos actuales |

@@ -1,0 +1,15 @@
+[submodule "device-motorola-miami"]
+	path = device-motorola-miami
+	url = https://github.com/LineageOS/android_device_motorola_miami.git
+[submodule "device-motorola-sm6375-common"]
+	path = device-motorola-sm6375-common
+	url = https://github.com/Motorola-SM6375-Devs/android_device_motorola_sm6375-common.git
+[submodule "hardware-motorola"]
+	path = hardware-motorola
+	url = https://github.com/LineageOS/android_hardware_motorola.git
+[submodule "kernel-motorola-sm6375"]
+	path = kernel-motorola-sm6375
+	url = https://github.com/Motorola-SM6375-Devs/android_kernel_motorola_sm6375.git
+[submodule "manifest-derpfest-16.2"]
+	path = manifest-derpfest-16.2
+	url = https://github.com/DerpFest-AOSP/android_manifest.git
