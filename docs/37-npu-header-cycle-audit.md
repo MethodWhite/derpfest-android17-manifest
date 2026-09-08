@@ -16,10 +16,10 @@ Los tres headers poseen include guards. El ciclo está confirmado por GitNexus y
 
 `npu_dev.c`, `npu_mgr.c`, `npu_hw_access.c`, `npu_host_ipc.c`, `npu_debugfs.c` y `npu_dbg.c` incluyen uno o más headers del grupo. El `Makefile` construye `msm_npu.o` con esos objetos cuando `CONFIG_MSM_NPU` está activo.
 
-## Bloqueo de validación
+## Validación de configuración
 
-El checkout no contiene `.config` y no se encontró un target de build específico para `miami`. Además, `CONFIG_MSM_NPU` declara dependencia de `ARCH_QCOM`. No se ejecutó una compilación artificial porque podría producir un diagnóstico falso y no representa el kernel objetivo.
+`miami` combina `vendor/holi-qgki_defconfig`, `vendor/ext_config/lineage_moto-holi.config` y `vendor/ext_config/moto-holi-miami.config`. La generación y mezcla de configuración se completó en un output temporal: `CONFIG_ARCH_QCOM=y` y `CONFIG_MIAMI_DTB=y`, pero `CONFIG_MSM_NPU` no queda definido/activado en la configuración efectiva. Además, `CONFIG_MSM_NPU` declara dependencia de `ARCH_QCOM`.
 
 ## Decisión
 
-No modificar headers ni aplicar una refactorización especulativa. El siguiente paso válido es obtener o generar el target/configuración real del kernel para `miami` y repetir la compilación del módulo NPU. Si la compilación pasa, el ciclo se documentará como benigno; si falla, se preparará una corrección atómica con regresión.
+No modificar headers ni aplicar una refactorización especulativa. El ciclo NPU no pertenece al build efectivo de `miami`, por lo que se retira del alcance de la portabilidad. El siguiente análisis debe centrarse en módulos habilitados por los fragmentos `holi`/`miami`.
