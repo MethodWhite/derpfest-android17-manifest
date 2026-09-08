@@ -1,0 +1,33 @@
+name: Bug triage
+on:
+  issues:
+    types: [opened, reopened]
+permissions:
+  issues: write
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body || '';
+            const labels = new Set((issue.labels || []).map(x => x.name));
+            labels.add('triage');
+            if (/^\[BUG\]/i.test(issue.title)) labels.add('bug');
+            if (/S0/i.test(body) || /S0/i.test(issue.title)) labels.add('severity:S0');
+            else if (/S1/i.test(body) || /S1/i.test(issue.title)) labels.add('severity:S1');
+            for (const name of labels) {
+              try {
+                await github.rest.issues.getLabel({owner: context.repo.owner, repo: context.repo.repo, name});
+              } catch (_) {
+                await github.rest.issues.createLabel({owner: context.repo.owner, repo: context.repo.repo, name, color: 'B60205'});
+              }
+            }
+            await github.rest.issues.setLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: [...labels]
+            });
