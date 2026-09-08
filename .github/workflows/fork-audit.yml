@@ -1,0 +1,36 @@
+name: Fork audit
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * 1'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Collect public fork metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p audit
+          page=1
+          : > audit/forks.jsonl
+          while :; do
+            response="$(gh api -H 'Accept: application/vnd.github+json' \
+              "/repos/${GITHUB_REPOSITORY}/forks?per_page=100&page=${page}")"
+            count="$(jq 'length' <<<"${response}")"
+            jq -c '.[] | {full_name, owner: .owner.login, default_branch, created_at, updated_at, html_url}' \
+              <<<"${response}" >> audit/forks.jsonl
+            [ "${count}" -lt 100 ] && break
+            page=$((page + 1))
+          done
+          jq -s 'sort_by(.full_name)' audit/forks.jsonl > audit/forks.json
+          rm audit/forks.jsonl
+      - name: Upload audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fork-audit
+          path: audit/forks.json
+          retention-days: 30
