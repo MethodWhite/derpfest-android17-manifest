@@ -11,6 +11,10 @@ Port comunitario de DerpFest para `miami`, organizado con ScrumBan y documentaci
 3. Crear trabajo desde las plantillas de GitHub y usar ramas `type/scope/short-description`.
 4. No subir blobs, credenciales, artefactos `out/` ni dumps del dispositivo.
 
+## CI/CD público
+
+El repositorio está diseñado para ser público: el CI por defecto valida cambios ligeros y seguros, mientras que los builds Android pesados se ejecutan bajo demanda y con artefactos/hashes trazables. Releases y updates están definidos en [`docs/31-release-and-updates.md`](docs/31-release-and-updates.md) y [`docs/32-ci-cd.md`](docs/32-ci-cd.md).
+
 ## Principios
 
 - Trazabilidad: cada cambio debe enlazar una historia, caso de uso o bug.

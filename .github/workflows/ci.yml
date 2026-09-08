@@ -1,0 +1,21 @@
+name: Public CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  repository:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate repository metadata
+        run: |
+          git diff --check
+          test -f README.md
+          test -f .gitmodules
+          test -f docs/31-release-and-updates.md
+          test -f docs/32-ci-cd.md
+          ! find . -path './.git' -prune -o -path './source' -prune -o -type f \( -name '*.img' -o -name '*.zip' -o -name '*.key' -o -name '*.pem' \) -print -quit | grep -q .
