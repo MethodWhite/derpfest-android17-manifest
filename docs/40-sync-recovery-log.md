@@ -22,6 +22,7 @@ El checkout Android 17 estaba incompleto por sparse-checkout y repositorios auxi
 - Se reemplazó esa mitigación por un puente nativo `prebuilt_libstd_android`, usando los `libstd` Android fijados del toolchain 1.93.1 por arquitectura; Soong superó correctamente la validación de variantes Rust/C++.
 - El siguiente bloqueo es `vendor.display.config@2.0`: el checkout contiene clientes y blobs WFD, pero no la definición HIDL de la interfaz. No se crea un stub; debe recuperarse la procedencia Qualcomm compatible antes de integrar WFD.
 - La interfaz HIDL compatible `vendor.display.config@2.0` se recuperó desde Lineage `lineage-24.0` y Soong superó ese bloqueo. El nuevo faltante es `libheif`, dependencia de WFD; no está en el manifest ni en el checkout, por lo que WFD queda pendiente sin stubs.
+- El análisis del blob `libwfdcommonutils.so` confirma que `libheif` es una dependencia dinámica real de WFD, no una referencia decorativa. Se conserva la dependencia y se bloquea la integración de WFD hasta obtener la biblioteca compatible.
 
 ## Criterio de cierre
 
