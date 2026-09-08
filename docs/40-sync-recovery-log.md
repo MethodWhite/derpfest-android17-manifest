@@ -24,6 +24,7 @@ El checkout Android 17 estaba incompleto por sparse-checkout y repositorios auxi
 - La interfaz HIDL compatible `vendor.display.config@2.0` se recuperó desde Lineage `lineage-24.0` y Soong superó ese bloqueo. El nuevo faltante es `libheif`, dependencia de WFD; no está en el manifest ni en el checkout, por lo que WFD queda pendiente sin stubs.
 - El análisis del blob `libwfdcommonutils.so` confirma que `libheif` es una dependencia dinámica real de WFD, no una referencia decorativa. Se conserva la dependencia y se bloquea la integración de WFD hasta obtener la biblioteca compatible.
 - El namespace `hardware/qcom-caf/wlan/qcwcn` se añadió para resolver `lib_driver_cmd_qcwcn`. El siguiente bloqueo es `libsnapdragoncolor-manager.so`, cuyo NEEDED exige `libtinyxml2-v34.so`; `libtinyxml2_1.so` no se sustituye sin verificar ABI/SONAME.
+- El alias `libtinyxml2-v34` fue validado por arquitectura y símbolos importados. Soong avanzó hasta `libpdmapper`/`pd-mapper`, que requieren `libjson.so`; `libjsoncpp` no es ABI equivalente y queda pendiente el blob Qualcomm correcto.
 
 ## Criterio de cierre
 
