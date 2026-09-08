@@ -18,6 +18,8 @@ El checkout Android 17 estaba incompleto por sparse-checkout y repositorios auxi
 - Falta resolver la interfaz Lineage `vendor.lineage.touch-V1.0-java` y su dependencia `hardware/google/pixel`.
 - La referencia Java HIDL fue retirada de `frameworks/base/Android.bp`: no tiene consumidores Java y el servicio Motorola usa `vendor.lineage.touch-V1-ndk`; el árbol Lineage actual publica Touch mediante AIDL.
 - Los paquetes opcionales Motorola `MotoActions` y `StylusKeyHandler` quedaron deshabilitados mientras falta `org.lineageos.settings.resources`; se reactivarán al sincronizar el Settings Lineage compatible.
+- Las variantes auxiliares `libunwindstack_demangle`, `libunwindstack_stdout_log` y `libunwindstack_no_dex` se deshabilitaron porque el toolchain Rust mezclado no ofrece `prebuilt_libstd` Android; el módulo base no se modifica.
+- Se reemplazó esa mitigación por un puente nativo `prebuilt_libstd_android`, usando los `libstd` Android fijados del toolchain 1.93.1 por arquitectura; Soong superó correctamente la validación de variantes Rust/C++.
 
 ## Criterio de cierre
 
