@@ -20,6 +20,7 @@ El checkout Android 17 estaba incompleto por sparse-checkout y repositorios auxi
 - Los paquetes opcionales Motorola `MotoActions` y `StylusKeyHandler` quedaron deshabilitados mientras falta `org.lineageos.settings.resources`; se reactivarán al sincronizar el Settings Lineage compatible.
 - Las variantes auxiliares `libunwindstack_demangle`, `libunwindstack_stdout_log` y `libunwindstack_no_dex` se deshabilitaron porque el toolchain Rust mezclado no ofrece `prebuilt_libstd` Android; el módulo base no se modifica.
 - Se reemplazó esa mitigación por un puente nativo `prebuilt_libstd_android`, usando los `libstd` Android fijados del toolchain 1.93.1 por arquitectura; Soong superó correctamente la validación de variantes Rust/C++.
+- El siguiente bloqueo es `vendor.display.config@2.0`: el checkout contiene clientes y blobs WFD, pero no la definición HIDL de la interfaz. No se crea un stub; debe recuperarse la procedencia Qualcomm compatible antes de integrar WFD.
 
 ## Criterio de cierre
 
