@@ -1,0 +1,31 @@
+name: Bug hunter
+on:
+  workflow_dispatch:
+    inputs:
+      artifact_path:
+        description: Path to a sanitized log or report
+        required: false
+        default: ''
+  schedule:
+    - cron: '41 3 * * 1-5'
+permissions:
+  contents: read
+jobs:
+  static-hunt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Hunt repository hazards
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          ! rg -n --hidden --glob '!source/**' --glob '!.git/**' \
+            'BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|gh[pousr]_[A-Za-z0-9_]+|AIza[0-9A-Za-z_-]{20,}' .
+          ! find . -path './.git' -prune -o -path './source' -prune -o \
+            -type f \( -name '*.img' -o -name '*.key' -o -name '*.pem' \) -print -quit | grep -q .
+      - name: Scan supplied sanitized artifact
+        if: inputs.artifact_path != ''
+        run: |
+          test -f "${{ inputs.artifact_path }}"
+          ! rg -n 'imei|serial.?number|BEGIN .* PRIVATE KEY|authorization: bearer' "${{ inputs.artifact_path }}" -i
