@@ -26,6 +26,7 @@
 - [[35-gitnexus-atomic-work]] — análisis de impacto y commits atómicos
 - [[40-sync-recovery-log]] — incidencias y recuperación del checkout
 - [[41-branch-fork-governance]] — ramas, forks y auditoría de contribuyentes
+- [[42-ai-micromodular-contribution-protocol]] — método de trabajo asistido por IA, microcommits y seguridad
 
 ## Convención de enlaces
 
