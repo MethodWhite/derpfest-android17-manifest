@@ -11,6 +11,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - name: Install ripgrep
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ripgrep
       - name: Check required documentation
         run: |
           test -f README.md
@@ -18,8 +20,8 @@ jobs:
           test -f docs/01-project-charter.md
           test -f docs/02-scrum-ban.md
           test -f docs/04-bug-reporting.md
-          rg -q 'Android 17' README.md
-          rg -q 'miami' README.md
+          grep -Eq 'Android 17' README.md
+          grep -Eq 'miami' README.md
       - name: Check markdown links are not empty
         run: |
           if rg -nE '\\]\\(\\s*\\)' README.md docs .github; then
