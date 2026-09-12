@@ -1,6 +1,6 @@
 # DerpFest Android 17 — Motorola Edge 30 Neo (`miami`)
 
-![DerpFest](manifest-derpfest-16.2/derpfest.png)
+![DerpFest](https://raw.githubusercontent.com/DerpFest-AOSP/DerpSite/master/dist/img/logo.png)
 
 Port comunitario de DerpFest para `miami`, organizado con ScrumBan y documentación enlazada para Obsidian. El código fuente AOSP/ROM vive en [`source/`](source/); la documentación operativa vive en [`docs/`](docs/).
 
