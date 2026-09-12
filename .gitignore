@@ -14,8 +14,17 @@ source/.repo/
 *.pem
 credentials/
 private/
+*.p12
+*.jks
+*.keystore
+.env
+.env.*
 
 # Local/editor state
 .obsidian/workspace*.json
 .DS_Store
 .gitnexus/
+.claude/
+AGENTS.md
+CLAUDE.md
+docs/templates/
