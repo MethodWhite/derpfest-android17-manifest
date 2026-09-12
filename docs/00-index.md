@@ -9,6 +9,11 @@
 - [[03-branching-and-commits]] — ramas, commits y releases
 - [[04-bug-reporting]] — clasificación, evidencia y severidad
 - [[05-contribution-guide]] — revisión y seguridad
+- [[governance/PROJECT_GOVERNANCE]] — roles, decisiones y aceptación
+- [[governance/ARCHITECTURE_STANDARD]] — capas, contratos y modularidad
+- [[governance/PUBLIC_REPOSITORY_STANDARD]] — contenido y seguridad del repositorio público
+- [[governance/SOURCE_RIGHTS_POLICY]] — licencias, logos y procedencia
+- [[governance/ADR_TEMPLATE]] — plantilla para decisiones técnicas
 
 ## Producto y arquitectura
 

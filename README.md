@@ -15,6 +15,10 @@ Integración comunitaria y escalable de DerpFest Android 17, basada en el manifi
 
 El repositorio está diseñado para ser público: el CI por defecto valida cambios ligeros y seguros, mientras que los builds Android pesados se ejecutan bajo demanda y con artefactos/hashes trazables. Releases y updates están definidos en [`docs/31-release-and-updates.md`](docs/31-release-and-updates.md) y [`docs/32-ci-cd.md`](docs/32-ci-cd.md).
 
+## Gobierno y contribuciones
+
+La gobernanza, arquitectura por capas, procedencia de código/assets y reglas del repositorio público están en [`docs/governance/`](docs/governance/PROJECT_GOVERNANCE.md). Toda contribución, incluida la asistida por IA, sigue [`CONTRIBUTING.md`](CONTRIBUTING.md) y el [protocolo micromodular](docs/42-ai-micromodular-contribution-protocol.md).
+
 ## Principios
 
 - Trazabilidad: cada cambio debe enlazar una historia, caso de uso o bug.
