@@ -21,7 +21,7 @@ jobs:
           test -f docs/02-scrum-ban.md
           test -f docs/04-bug-reporting.md
           grep -Eq 'Android 17' README.md
-          grep -Eq 'miami' README.md
+          grep -Eq 'DerpFest Android 17' README.md
       - name: Check markdown links are not empty
         run: |
           if rg -nE '\\]\\(\\s*\\)' README.md docs .github; then
