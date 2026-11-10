@@ -33,4 +33,4 @@ jobs:
         with:
           name: fork-audit
           path: audit/forks.json
-          retention-days: 30
+          retention-days: 14
